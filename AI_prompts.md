@@ -725,3 +725,7 @@ Follow-up — the 103 re-run's Boss decision said 20 × $50 = $1,000 while the r
 Follow-up — the first prompt asked to see what would be committed before pushing; after checking the list and creating the empty public repo, I approved:
 
 > approve push
+
+Follow-up — the first push was refused (403) because my GitHub token could not write to the new repo; after I fixed the token access, I asked to retry:
+
+> push again
