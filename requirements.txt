@@ -1,0 +1,7 @@
+# HW5 Campus Customs. Install: python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+fastmcp
+python-dotenv
+pydantic-ai-slim[openai,mcp]
+openai
+fastapi
+uvicorn

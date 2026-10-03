@@ -1,0 +1,575 @@
+{
+  "problem": 9,
+  "shop_date": "2026-08-31",
+  "reset": {
+    "at": "2026-10-03T22:39:57+00:00",
+    "source": "data/campus_customs.db",
+    "target": "data/campus_customs_new.db",
+    "verified": "byte-identical after reset; 3 open tickets; 0 payments"
+  },
+  "starting_checking": 3400.0,
+  "ending_checking": 160.0,
+  "ending_checking_in_cash_accounts": 160.0,
+  "cash_matches_db": true,
+  "payments_table": [
+    {
+      "id": 1,
+      "kind": "invoice",
+      "ref_id": 501,
+      "amount": 840.0,
+      "account": "checking",
+      "paid_at": "2026-08-31",
+      "approved_by": "Soyoun Park"
+    },
+    {
+      "id": 2,
+      "kind": "rent",
+      "ref_id": 1,
+      "amount": 2400.0,
+      "account": "checking",
+      "paid_at": "2026-08-31",
+      "approved_by": "Soyoun Park"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket_id": 101,
+      "subject": "Bulldog tee",
+      "type": "customer_order",
+      "requester": "Tauhid Zaman",
+      "run_id": "7ebd664030",
+      "started_at": "2026-10-03T22:40:06+00:00",
+      "model": "gpt-6-luna",
+      "agents_worked": [
+        "boss",
+        "inventory",
+        "accounting",
+        "customer_service"
+      ],
+      "agents_not_called": [
+        "facilities"
+      ],
+      "delegations": [
+        {
+          "from": "boss",
+          "to": "inventory",
+          "task": "For customer_order ticket 101: check availability of 1 CC-TEE-WHITE size S today 2026-08-31, and vendor/reprint details if short. Include relevant lead days/earliest arrival and any unpaid invoice blocking shipment."
+        },
+        {
+          "from": "boss",
+          "to": "accounting",
+          "task": "For customer order ticket 101, inspect invoice 501 ($840 open, Bulldog Print Co rush reprint CC-TEE-WHITE S). Check payment/cash status and whether a payment request can be submitted for human approval; do not pay."
+        },
+        {
+          "from": "boss",
+          "to": "customer_service",
+          "task": "Draft a reply for ticket 101 to Tauhid Zaman requesting 1 CC-TEE-WHITE size S. Inventory is 0; reprint needs invoice 501 $840 paid/approved before vendor can ship. Lead time 5 days, earliest arrival if it shipped today 2026-09-05. Explain timing without promising until payment/reprint confirmed."
+        }
+      ],
+      "tools_used": {
+        "inventory": [
+          {
+            "tool": "check_stock",
+            "args": {
+              "sku": "CC-TEE-WHITE",
+              "size": "S"
+            }
+          },
+          {
+            "tool": "list_vendors",
+            "args": {}
+          },
+          {
+            "tool": "get_stock_all_sizes",
+            "args": {
+              "sku": "CC-TEE-WHITE"
+            }
+          },
+          {
+            "tool": "vendor_shipping_status",
+            "args": {
+              "vendor_id": 1
+            }
+          }
+        ],
+        "accounting": [
+          {
+            "tool": "get_invoice",
+            "args": {
+              "invoice_id": 501
+            }
+          },
+          {
+            "tool": "get_cash_balance",
+            "args": {
+              "account": "checking"
+            }
+          },
+          {
+            "tool": "check_payment",
+            "args": {
+              "amount": 840,
+              "account": "checking"
+            }
+          },
+          {
+            "tool": "list_payments",
+            "args": {}
+          }
+        ],
+        "customer_service": [
+          {
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": 101
+            }
+          },
+          {
+            "tool": "check_stock",
+            "args": {
+              "sku": "CC-TEE-WHITE",
+              "size": "S"
+            }
+          },
+          {
+            "tool": "get_stock_all_sizes",
+            "args": {
+              "sku": "CC-TEE-WHITE"
+            }
+          }
+        ]
+      },
+      "agent_summaries": {
+        "boss": "Tauhid Zaman ordered one CC-TEE-WHITE tee in size S, but none are in stock. Bulldog Print Co needs invoice 501 ($840, due 2026-08-28) cleared before it will ship; if shipped today, its five-day lead time gives an earliest arrival of 2026-09-05. Accounting confirms the $840 payment request is eligible for human approval and would leave $2,560 in checking; a customer reply draft is ready.",
+        "inventory": "There are 0 CC-TEE-WHITE size S in stock; need 1, short by 1. Bulldog Print Co (apparel reprint) has a 5-day lead time, but it cannot ship because invoice 501 for $840 is open; if it could ship today, earliest arrival would be 2026-09-05. The open invoice is for a rush reprint of this same item.",
+        "accounting": "Invoice 501 for Bulldog Print Co is open and 3 days overdue as of 2026-08-31. The $840 payment request is eligible for human approval: checking has $3,400 before and would have $2,560 after; no prior payment is recorded.",
+        "customer_service": "Draft reply explains that size S is out of stock and gives the earliest possible arrival as September 5, contingent on the invoice being paid/approved and the reprint proceeding. It does not promise availability or shipment."
+      },
+      "boss_decision": {
+        "summary": "Tauhid Zaman ordered one CC-TEE-WHITE tee in size S, but none are in stock. Bulldog Print Co needs invoice 501 ($840, due 2026-08-28) cleared before it will ship; if shipped today, its five-day lead time gives an earliest arrival of 2026-09-05. Accounting confirms the $840 payment request is eligible for human approval and would leave $2,560 in checking; a customer reply draft is ready.",
+        "status": "needs_human_approval",
+        "next_steps": [
+          "Approve the $840 payment request for invoice 501 to unblock the vendor shipment.",
+          "Review the customer reply draft and send it yourself; clarify the arrival date is conditional on shipment proceeding."
+        ]
+      },
+      "decision_corrected": null,
+      "payment_requests": [
+        {
+          "kind": "invoice",
+          "ref_id": 501,
+          "payee": "Bulldog Print Co",
+          "amount": 840.0,
+          "account": "checking",
+          "reason": "Rush reprint CC-TEE-WHITE S; invoice is open and overdue. Requires human approval; no payment made.",
+          "sku": null,
+          "size": null,
+          "qty": null,
+          "balance_before": 3400.0,
+          "balance_after": 2560.0,
+          "status": "paid",
+          "payment_id": 1,
+          "approved_by": "Soyoun Park"
+        }
+      ],
+      "drafts": [
+        {
+          "kind": "customer_reply",
+          "to": "Tauhid Zaman",
+          "subject": "Re: Bulldog tee",
+          "body": "Hi Tauhid,\n\nThanks for reaching out. The Classic Bulldog Tee in size S is currently out of stock. If the reprint goes ahead, the earliest it could arrive is September 5; that timing depends on the reprint being confirmed, so I can\u2019t promise a date yet. We\u2019ll let you know once it\u2019s confirmed.\n\nBest,\nCampus Customs",
+          "status": "draft"
+        }
+      ],
+      "human_approvals": [
+        {
+          "kind": "invoice",
+          "ref_id": 501,
+          "payee": "Bulldog Print Co",
+          "amount": 840.0,
+          "approved_by": "Soyoun Park",
+          "payment_id": 1,
+          "balance_after": 2560.0,
+          "at": "2026-10-03T22:51:06+00:00"
+        }
+      ],
+      "refused_payments": 0,
+      "cash": {
+        "before": 3400.0,
+        "change": -840.0,
+        "after": 2560.0
+      },
+      "final_ticket_status": "resolved",
+      "open_reasons": [],
+      "history": [],
+      "usage": {
+        "requests": 13,
+        "tool_calls": 14,
+        "input_tokens": 20353,
+        "output_tokens": 1338,
+        "total_tokens": 21691
+      }
+    },
+    {
+      "ticket_id": 102,
+      "subject": "Rent due",
+      "type": "rent_notice",
+      "requester": "Elm City Properties",
+      "run_id": "431d956e23",
+      "started_at": "2026-10-03T22:51:16+00:00",
+      "model": "gpt-6-luna",
+      "agents_worked": [
+        "boss",
+        "facilities",
+        "accounting"
+      ],
+      "agents_not_called": [
+        "inventory",
+        "customer_service"
+      ],
+      "delegations": [
+        {
+          "from": "boss",
+          "to": "facilities",
+          "task": "For rent notice ticket 102, check lease_id 1 against the email saying rent is due in 2 days (today 2026-08-31). Verify amount, landlord, due date, and whether notice matches lease; check/request payment only if appropriate, including cash sufficiency."
+        },
+        {
+          "from": "facilities",
+          "to": "accounting",
+          "task": "For rent ticket 102, lease_id 1: landlord Elm City Properties, exact full rent $2,400.00, due 2026-09-02. Check cash sufficiency and create the payment request if appropriate; report status and balance facts."
+        }
+      ],
+      "tools_used": {
+        "facilities": [
+          {
+            "tool": "get_lease",
+            "args": {
+              "lease_id": 1
+            }
+          }
+        ],
+        "accounting": [
+          {
+            "tool": "get_lease",
+            "args": {
+              "lease_id": 1
+            }
+          },
+          {
+            "tool": "get_cash_balance",
+            "args": {
+              "account": "checking"
+            }
+          },
+          {
+            "tool": "list_payments",
+            "args": {}
+          },
+          {
+            "tool": "check_payment",
+            "args": {
+              "amount": 2400,
+              "account": "checking"
+            }
+          }
+        ]
+      },
+      "agent_summaries": {
+        "boss": "Ticket 102 reports rent due in two days. Lease 1 requires $2,400 to Elm City Properties by 2026-09-02, so the stated timing matches; the notice did not include an amount or landlord for comparison. Cash is sufficient ($2,560 balance; $160 projected after payment), and the $2,400 payment request is awaiting human approval.",
+        "accounting": "The exact $2,400 rent for Elm City Properties is due 2026-09-02. Checking has enough cash; the rent payment request is awaiting human approval, and the projected balance afterward is $160.00.",
+        "facilities": "The lease requires $2,400.00 to Elm City Properties by 2026-09-02, which is 2 days from today (2026-08-31). The email\u2019s \u201cdue in 2 days\u201d timing matches the lease; the amount and landlord cannot be compared because they were not provided in the notice text. Cash is sufficient, and a rent payment request is awaiting human approval."
+      },
+      "boss_decision": {
+        "summary": "Ticket 102 reports rent due in two days. Lease 1 requires $2,400 to Elm City Properties by 2026-09-02, so the stated timing matches; the notice did not include an amount or landlord for comparison. Cash is sufficient ($2,560 balance; $160 projected after payment), and the $2,400 payment request is awaiting human approval.",
+        "status": "needs_human_approval",
+        "next_steps": [
+          "Approve the $2,400 rent payment for lease 1 to Elm City Properties.",
+          "Confirm the notice\u2019s amount and payee match the lease before processing."
+        ]
+      },
+      "decision_corrected": null,
+      "payment_requests": [
+        {
+          "kind": "rent",
+          "ref_id": 1,
+          "payee": "Elm City Properties",
+          "amount": 2400.0,
+          "account": "checking",
+          "reason": "Full monthly rent due 2026-09-02; sufficient funds confirmed. Requires human approval.",
+          "sku": null,
+          "size": null,
+          "qty": null,
+          "balance_before": 2560.0,
+          "balance_after": 160.0,
+          "status": "paid",
+          "payment_id": 2,
+          "approved_by": "Soyoun Park"
+        }
+      ],
+      "drafts": [],
+      "human_approvals": [
+        {
+          "kind": "rent",
+          "ref_id": 1,
+          "payee": "Elm City Properties",
+          "amount": 2400.0,
+          "approved_by": "Soyoun Park",
+          "payment_id": 2,
+          "balance_after": 160.0,
+          "at": "2026-10-03T22:53:27+00:00"
+        }
+      ],
+      "refused_payments": 0,
+      "cash": {
+        "before": 2560.0,
+        "change": -2400.0,
+        "after": 160.0
+      },
+      "final_ticket_status": "resolved",
+      "open_reasons": [],
+      "history": [],
+      "usage": {
+        "requests": 8,
+        "tool_calls": 7,
+        "input_tokens": 10872,
+        "output_tokens": 902,
+        "total_tokens": 11774
+      }
+    },
+    {
+      "ticket_id": 103,
+      "subject": "Bulk hoodie discount",
+      "type": "price_override",
+      "requester": "Yale AI Club",
+      "run_id": "03ee63f294",
+      "started_at": "2026-10-03T23:08:24+00:00",
+      "model": "gpt-6-luna",
+      "agents_worked": [
+        "boss",
+        "inventory",
+        "accounting",
+        "customer_service"
+      ],
+      "agents_not_called": [
+        "facilities"
+      ],
+      "delegations": [
+        {
+          "from": "boss",
+          "to": "inventory",
+          "task": "Ticket 103 price_override: check SKU CC-HOOD-NAVY size M, qty 20. Report shelf stock/have and short, reprint vendor id, whether it can ship, earliest arrival if shipped today 2026-08-31, and unit cost."
+        },
+        {
+          "from": "boss",
+          "to": "accounting",
+          "task": "Ticket 103 reprint purchase check: vendor Bulldog Print Co id 1, SKU CC-HOOD-NAVY size M, qty 12 short, unit_cost $22.00, amount $264.00. Check cash first and report whether purchase request waits for human approval or is refused for insufficient cash."
+        },
+        {
+          "from": "boss",
+          "to": "customer_service",
+          "task": "Draft offer response for ticket 103, Yale AI Club, CC-HOOD-NAVY size M qty 20. Final price will be $50 per hoodie (list $58, cost $22). Stock 8 now; 12 more reprint purchase was refused due to insufficient cash, so offer only 8 in-stock units and say remaining 12 cannot be confirmed yet; no date or money talk. Draft only."
+        }
+      ],
+      "tools_used": {
+        "inventory": [
+          {
+            "tool": "check_stock",
+            "args": {
+              "sku": "CC-HOOD-NAVY",
+              "size": "M"
+            }
+          },
+          {
+            "tool": "get_pricing",
+            "args": {
+              "sku": "CC-HOOD-NAVY"
+            }
+          },
+          {
+            "tool": "list_vendors",
+            "args": {}
+          },
+          {
+            "tool": "get_desk",
+            "args": {}
+          },
+          {
+            "tool": "vendor_shipping_status",
+            "args": {
+              "vendor_id": 1
+            }
+          }
+        ],
+        "accounting": [
+          {
+            "tool": "get_cash_balance",
+            "args": {
+              "account": "checking"
+            }
+          },
+          {
+            "tool": "get_pricing",
+            "args": {
+              "sku": "CC-HOOD-NAVY"
+            }
+          },
+          {
+            "tool": "vendor_shipping_status",
+            "args": {
+              "vendor_id": 1
+            }
+          },
+          {
+            "tool": "check_payment",
+            "args": {
+              "amount": 264,
+              "account": "checking"
+            }
+          }
+        ],
+        "boss": [
+          {
+            "tool": "get_pricing",
+            "args": {
+              "sku": "CC-HOOD-NAVY"
+            }
+          }
+        ],
+        "customer_service": [
+          {
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": 103
+            }
+          },
+          {
+            "tool": "check_stock",
+            "args": {
+              "sku": "CC-HOOD-NAVY",
+              "size": "M"
+            }
+          },
+          {
+            "tool": "get_pricing",
+            "args": {
+              "sku": "CC-HOOD-NAVY"
+            }
+          }
+        ]
+      },
+      "agent_summaries": {
+        "boss": "Yale AI Club requested 20 navy, size M hoodies with a bulk discount. Stock is 8; the 12-unit reprint would cost $264 and was refused because checking has only $160, so only the 8 in-stock units can be offered now. The customer draft offers those 8 at $50 each ($400 total); the remaining 12 cannot be confirmed yet.",
+        "inventory": "Shelf stock is 8 of 20 requested (short by 12). The apparel reprint vendor is Bulldog Print Co (vendor 1); it can ship, with earliest arrival on 2026-09-05 if shipped today. Unit cost is $22.00.",
+        "accounting": "The $264.00 reprint purchase from Bulldog Print Co is refused for insufficient checking cash; the balance is $160.00, leaving a $104.00 shortfall. The vendor can ship, and arrival would be 2026-09-05 if shipped today.",
+        "customer_service": "Draft offers Yale AI Club 8 Basic Hoodie Big Yale hoodies in navy, size M, at $50 each ($400 total); the remaining 12 cannot be confirmed yet."
+      },
+      "boss_decision": {
+        "summary": "Yale AI Club requested 20 navy, size M hoodies with a bulk discount. Stock is 8; the 12-unit reprint would cost $264 and was refused because checking has only $160, so only the 8 in-stock units can be offered now. The customer draft offers those 8 at $50 each ($400 total); the remaining 12 cannot be confirmed yet.",
+        "status": "blocked",
+        "next_steps": [
+          "Review and send the customer draft yourself.",
+          "Resolve the $104 cash shortfall before considering a reprint for the remaining 12."
+        ],
+        "discount": {
+          "sku": "CC-HOOD-NAVY",
+          "qty": 8,
+          "list_price": 58.0,
+          "unit_cost": 22.0,
+          "unit_price": 50.0,
+          "total": 400.0,
+          "reason": "A roughly 14% bulk discount from the $58 list price, while staying above the $22 unit cost."
+        }
+      },
+      "decision_corrected": {
+        "field": "discount",
+        "before": {
+          "qty": 20,
+          "total": 1000.0
+        },
+        "after": {
+          "qty": 8,
+          "total": 400.0
+        },
+        "by": "Soyoun Park (human review)",
+        "why": "the actual offer is the 8 in-stock hoodies at $50 = $400; the reprint of 12 was refused for cash"
+      },
+      "payment_requests": [
+        {
+          "kind": "purchase",
+          "ref_id": 1,
+          "payee": "Bulldog Print Co",
+          "amount": 264.0,
+          "account": "checking",
+          "reason": "Reprint 12 CC-HOOD-NAVY, size M; refused because checking cash is insufficient.",
+          "sku": "CC-HOOD-NAVY",
+          "size": "M",
+          "qty": 12,
+          "balance_before": 160.0,
+          "balance_after": null,
+          "status": "refused_not_enough_cash",
+          "payment_id": null,
+          "approved_by": null
+        }
+      ],
+      "drafts": [
+        {
+          "kind": "customer_reply",
+          "to": "Yale AI Club",
+          "subject": "Re: Bulk hoodie discount",
+          "body": "Hi Yale AI Club,\n\nWe can offer 8 navy Basic Hoodie Big Yale hoodies in size M at $50 each, for $400 total. The remaining 12 cannot be confirmed yet.\n\nBest,\nCampus Customs",
+          "status": "draft"
+        }
+      ],
+      "human_approvals": [],
+      "refused_payments": 0,
+      "cash": {
+        "before": 160.0,
+        "change": 0,
+        "after": 160.0
+      },
+      "final_ticket_status": "open",
+      "open_reasons": [
+        "a needed payment or purchase was refused: not enough cash",
+        "the Boss reported the ticket as blocked"
+      ],
+      "history": [
+        {
+          "run_id": "cc1a7c1812",
+          "what": "first run: offer left pending the owner, reprint cash not checked; backend marked it resolved"
+        },
+        {
+          "event": "ticket_reopened",
+          "at": "2026-10-03T23:08:15+00:00",
+          "why": "human review: Boss had not decided the discount and nobody checked cash for the reprint"
+        },
+        {
+          "run_id": "03ee63f294",
+          "what": "re-run with the fixed rules (this result)"
+        },
+        {
+          "event": "decision_corrected",
+          "why": "Boss discount qty/total corrected by a human to match the actual offer: 8 x $50 = $400 (was 20 x $50 = $1,000)"
+        }
+      ],
+      "usage": {
+        "requests": 14,
+        "tool_calls": 16,
+        "input_tokens": 25490,
+        "output_tokens": 1383,
+        "total_tokens": 26873
+      }
+    }
+  ],
+  "checks": {
+    "final_status": {
+      "101": "resolved",
+      "102": "resolved",
+      "103": "open"
+    },
+    "blocked_marked_resolved": [],
+    "payments_without_human_approval": [],
+    "lowest_balance": 160.0,
+    "total_tokens": 60338
+  },
+  "note": "Ticket 103 was re-run after a human review (see tickets[2].history). Its first run cc1a7c1812 stays in the audit trail but is superseded."
+}

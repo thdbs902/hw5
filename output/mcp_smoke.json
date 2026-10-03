@@ -1,0 +1,81 @@
+{
+  "server": "campus-customs",
+  "transport": "stdio (Claude Code, HW5/.mcp.json)",
+  "database": "data/campus_customs_new.db",
+  "shop_today": "2026-08-31 (desk.date_today \u2014 the shop's 'today', not the computer clock)",
+  "data_zip_check": "data/campus_customs.db matches data.zip byte-for-byte; lease 1 next_due is 2026-09-02 in data.zip too, so rent is due in 2 days (not overdue).",
+  "tests": [
+    {
+      "ticket": "101",
+      "prompt": "Ticket 101: how many Classic Bulldog Tees (CC-TEE-WHITE) in size S are in stock?",
+      "tool": "check_stock",
+      "arguments": {
+        "sku": "CC-TEE-WHITE",
+        "size": "S"
+      },
+      "tool_output": {
+        "found": true,
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "S",
+        "qty": 0,
+        "location": "Aisle B"
+      },
+      "database_row": {
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "S",
+        "qty": 0,
+        "location": "Aisle B"
+      },
+      "matches_database": true
+    },
+    {
+      "ticket": "102",
+      "prompt": "Ticket 102: what rent do we owe on lease 1, to whom, and when is it due?",
+      "tool": "get_lease",
+      "arguments": {
+        "lease_id": 1
+      },
+      "tool_output": {
+        "found": true,
+        "id": 1,
+        "space_name": "Chapel Street shop",
+        "landlord": "Elm City Properties",
+        "monthly_rent": 2400,
+        "next_due": "2026-09-02",
+        "notes": null
+      },
+      "database_row": {
+        "id": 1,
+        "space_name": "Chapel Street shop",
+        "landlord": "Elm City Properties",
+        "monthly_rent": 2400.0,
+        "next_due": "2026-09-02",
+        "notes": null
+      },
+      "matches_database": true,
+      "note": "Due 2026-09-02 = 2 days after desk.date_today 2026-08-31, matching ticket 102's 'rent due in 2 days'."
+    },
+    {
+      "ticket": "103",
+      "prompt": "Ticket 103: what are the unit cost and list price of the navy hoodie CC-HOOD-NAVY?",
+      "tool": "get_pricing",
+      "arguments": {
+        "sku": "CC-HOOD-NAVY"
+      },
+      "tool_output": {
+        "found": true,
+        "sku": "CC-HOOD-NAVY",
+        "unit_cost": 22,
+        "list_price": 58
+      },
+      "database_row": {
+        "sku": "CC-HOOD-NAVY",
+        "unit_cost": 22.0,
+        "list_price": 58.0
+      },
+      "matches_database": true
+    }
+  ]
+}

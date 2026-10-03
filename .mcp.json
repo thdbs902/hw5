@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "campus-customs": {
+      "command": "/Users/soyoun/YALE/HW5/.venv/bin/python",
+      "args": ["/Users/soyoun/YALE/HW5/mcp_server/server.py"]
+    }
+  }
+}

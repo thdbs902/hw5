@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Customs — Resolved Board</title>
+<style>
+:root{--ink:#07070b;--gold:#f5c542;--gold2:#ffdf7e;--cream:#f5f1e6;--muted:#9a96a6;--line:rgba(245,197,66,.2)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--cream);font:15px/1.55 "Avenir Next","Helvetica Neue",Arial,sans-serif;
+background:radial-gradient(1100px 500px at 10% -10%,rgba(245,197,66,.16),transparent 60%),radial-gradient(900px 500px at 100% 0,rgba(58,110,194,.18),transparent 60%),var(--ink);background-attachment:fixed}
+.wrap{max-width:1280px;margin:0 auto;padding:44px 28px 70px}
+.eyebrow{letter-spacing:.35em;text-transform:uppercase;font-size:12px;color:var(--gold)}
+h1{margin:8px 0 6px;font:900 clamp(40px,6vw,76px)/1 "Didot","Bodoni 72",Georgia,serif;background:linear-gradient(90deg,#b8860b,var(--gold2),var(--gold),#fff3c4,var(--gold));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite}
+@keyframes sh{to{background-position:200% center}}
+.sub{color:var(--muted);margin:0 0 26px}
+.top{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+@media(max-width:900px){.top,.grid2{grid-template-columns:1fr!important}}
+.kpi{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:rgba(255,255,255,.03)}
+.kpi span{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.kpi b{font:800 32px "Didot","Bodoni 72",Georgia,serif;color:var(--gold2)}
+.kpi.gold{border-color:var(--gold);background:linear-gradient(160deg,rgba(245,197,66,.18),rgba(0,0,0,.3))}
+.tk{position:relative;overflow:hidden;margin-bottom:24px;padding:26px 28px;border-radius:22px;border:1px solid var(--gold);background:linear-gradient(170deg,rgba(245,197,66,.10),#0f0f16 35%);box-shadow:0 30px 70px -40px rgba(245,197,66,.6)}
+.stamp{position:absolute;right:22px;top:22px;transform:rotate(10deg);border:3px double var(--gold);border-radius:8px;padding:5px 14px;font:900 16px Georgia,serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);box-shadow:0 0 22px rgba(245,197,66,.4)}
+.tk header{display:flex;gap:18px;align-items:center}
+.no{font:900 64px/1 "Didot","Bodoni 72",Georgia,serif;color:var(--gold)}
+.tk h2{margin:0;font:800 28px "Didot","Bodoni 72",Georgia,serif}
+.tk header p{margin:2px 0 0;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0 8px}
+.dec{padding:5px 14px;border-radius:999px;background:var(--gold);color:var(--ink);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.cash{padding:5px 14px;border-radius:999px;border:1px solid var(--line)} .cash span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.15em} .cash b{color:var(--gold2)} .cash em{color:var(--muted);font-style:normal}
+.tok{color:var(--muted);font-size:13px}
+.boss{font:500 17px/1.5 Georgia,serif;margin:8px 0 18px;max-width:1000px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+h3{margin:16px 0 8px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.ag{font-weight:800;color:var(--c)} .arr{color:var(--gold);font-weight:800}
+.flow{margin:0;padding-left:20px} .flow li{margin:6px 0} .flow small{display:block;color:var(--muted);font-size:13px}
+.skip{color:var(--muted);font-size:13px}
+table{width:100%;border-collapse:collapse} td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top} td.n{text-align:right;font-variant-numeric:tabular-nums}
+code{font:600 12px "SF Mono",Menlo,monospace} td code{display:inline-block;margin:2px 4px 2px 0;padding:1px 7px;border-radius:6px;background:rgba(0,0,0,.5);border:1px solid var(--line);color:var(--gold2)}
+.sums{list-style:none;margin:0;padding:0} .sums li{margin:6px 0;padding:8px 12px;border-left:3px solid var(--c);background:rgba(0,0,0,.28);border-radius:8px;font-size:14px} .sums b{display:block;color:var(--c)}
+.appr{padding:10px 12px;border-radius:10px;border:1px solid #3ee08f;background:rgba(62,224,143,.08);margin-bottom:6px} .appr.none{border-color:var(--line);background:rgba(255,255,255,.03);color:var(--muted)}
+details{margin:6px 0;padding:8px 12px;border-radius:10px;background:rgba(255,255,255,.04)} summary{cursor:pointer} summary i{color:var(--muted);font-size:12px} pre{white-space:pre-wrap;font:14px/1.5 inherit;font-family:inherit}
+.tk.open{border-color:#9cc0ff;background:linear-gradient(170deg,rgba(58,110,194,.16),#0f0f16 35%);box-shadow:0 30px 70px -40px rgba(58,110,194,.7)}
+.tk.open .stamp{color:#9cc0ff;border-color:#9cc0ff;box-shadow:0 0 22px rgba(58,110,194,.5)} .tk.open .dec{background:#ff5470;color:#fff}
+.disc{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;margin:0 0 14px;padding:10px 14px;border:1px solid var(--gold);border-radius:12px;background:rgba(245,197,66,.08)} .disc span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)} .disc b{font:800 22px Georgia,serif;color:var(--gold2)} .disc em{color:var(--muted);font-style:normal;font-size:13px}
+.why{margin:0 0 14px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,84,112,.5);background:rgba(255,84,112,.08)} .why ul{margin:4px 0 0;padding-left:20px}
+.appr.refused{border-color:#ff5470;background:rgba(255,84,112,.08)}
+.hist{margin:0;padding-left:20px;color:var(--muted);font-size:13px}
+.ledger{border:1px solid var(--gold);border-radius:22px;padding:22px 26px;background:linear-gradient(180deg,#17150e,#0c0b08)}
+footer{color:var(--muted);font-size:13px;margin-top:24px}
+</style></head><body><div class="wrap">
+<div class="eyebrow">Campus Customs · Resolved board · shop day 2026-08-31</div>
+<h1>Two resolved. One blocked on cash.</h1>
+<p class="sub">Problem 9 real run: working DB reset from <code>campus_customs.db</code>, then 101 → 102 → 103 one at a time, gpt-6-luna through Portkey. Every payment waited for my approval. Ticket 103 was reopened after my review and re-run with the fixed rules. Source: <code>output/resolved_tickets.json</code>.</p>
+<div class="top">
+  <div class="kpi"><span>Tickets resolved</span><b>2 / 3</b></div>
+  <div class="kpi"><span>Starting checking</span><b>$3,400.00</b></div>
+  <div class="kpi gold"><span>Ending checking (= cash_accounts)</span><b>$160.00</b></div>
+  <div class="kpi"><span>Tokens, final runs</span><b>60,338</b></div>
+</div>
+
+<article class="tk resolved">
+  <div class="stamp">Resolved</div>
+  <header><span class="no">#101</span><div><h2>Bulldog tee</h2><p>Tauhid Zaman · customer order · run <code>7ebd664030</code></p></div></header>
+  <div class="row">
+    <div class="dec">Needed my approval</div>
+    <div class="cash"><span>Cash</span> $3,400.00 <span class="arr">→</span> <b>$2,560.00</b> <em>(−$840.00)</em></div>
+    <div class="tok">13 model calls · 14 tool calls · 21,691 tokens</div>
+  </div>
+  <p class="boss">Tauhid Zaman ordered one CC-TEE-WHITE tee in size S, but none are in stock. Bulldog Print Co needs invoice 501 ($840, due 2026-08-28) cleared before it will ship; if shipped today, its five-day lead time gives an earliest arrival of 2026-09-05. Accounting confirms the $840 payment request is eligible for human approval and would leave $2,560 in checking; a customer reply draft is ready.</p>
+  
+  <div class="grid2">
+    <section><h3>Delegations</h3><ol class="flow"><li><span class="ag" style="--c:#f5c542">👑 The Boss</span> <span class="arr">→</span> <span class="ag" style="--c:#2ed3b7">📦 Inventory</span><small>For customer_order ticket 101: check availability of 1 CC-TEE-WHITE size S today 2026-08-31, and vendor/reprint details if short. Include relevant lead days/earliest arrival and any unpaid invoice blocking shipment.</small></li><li><span class="ag" style="--c:#f5c542">👑 The Boss</span> <span class="arr">→</span> <span class="ag" style="--c:#a78bfa">💵 Accounting</span><small>For customer order ticket 101, inspect invoice 501 ($840 open, Bulldog Print Co rush reprint CC-TEE-WHITE S). Check payment/cash status and whether a payment request can be submitted for human approval; do not pay.</small></li><li><span class="ag" style="--c:#f5c542">👑 The Boss</span> <span class="arr">→</span> <span class="ag" style="--c:#ff4fa3">💬 Customer Service</span><small>Draft a reply for ticket 101 to Tauhid Zaman requesting 1 CC-TEE-WHITE size S. Inventory is 0; reprint needs invoice 501 $840 paid/approved before vendor can ship. Lead time 5 days, earliest arrival if it shipped today 2026-09-05. Explain timing without promising until payment/reprint confirmed.</small></li></ol><p class="skip">Not called: Facilities</p>
+      <h3>MCP tools</h3><table><tr><td><span class="ag" style="--c:#2ed3b7">📦 Inventory</span></td><td><code>check_stock</code><code>list_vendors</code><code>get_stock_all_sizes</code><code>vendor_shipping_status</code></td></tr><tr><td><span class="ag" style="--c:#a78bfa">💵 Accounting</span></td><td><code>get_invoice</code><code>get_cash_balance</code><code>check_payment</code><code>list_payments</code></td></tr><tr><td><span class="ag" style="--c:#ff4fa3">💬 Customer Service</span></td><td><code>get_ticket</code><code>check_stock</code><code>get_stock_all_sizes</code></td></tr></table></section>
+    <section><h3>What each agent did</h3><ul class="sums"><li style="--c:#f5c542"><b>👑 The Boss</b>Tauhid Zaman ordered one CC-TEE-WHITE tee in size S, but none are in stock. Bulldog Print Co needs invoice 501 ($840, due 2026-08-28) cleared before it will ship; if shipped today, its five-day lead time gives an earliest arrival of 2026-09-05. Accounting confirms the $840 payment request is eligible for human approval and would leave $2,560 in checking; a customer reply draft is ready.</li><li style="--c:#2ed3b7"><b>📦 Inventory</b>There are 0 CC-TEE-WHITE size S in stock; need 1, short by 1. Bulldog Print Co (apparel reprint) has a 5-day lead time, but it cannot ship because invoice 501 for $840 is open; if it could ship today, earliest arrival would be 2026-09-05. The open invoice is for a rush reprint of this same item.</li><li style="--c:#a78bfa"><b>💵 Accounting</b>Invoice 501 for Bulldog Print Co is open and 3 days overdue as of 2026-08-31. The $840 payment request is eligible for human approval: checking has $3,400 before and would have $2,560 after; no prior payment is recorded.</li><li style="--c:#ff4fa3"><b>💬 Customer Service</b>Draft reply explains that size S is out of stock and gives the earliest possible arrival as September 5, contingent on the invoice being paid/approved and the reprint proceeding. It does not promise availability or shipment.</li></ul>
+      <h3>Human approval</h3><div class="appr">✍️ <b>Soyoun Park</b> approved invoice 501: <b>$840.00</b> to Bulldog Print Co · payment #1 · checking after $2,560.00</div>
+      <h3>Drafts on the board</h3><details><summary>Draft (customer reply) to Tauhid Zaman: Re: Bulldog tee <i>never sent</i></summary><pre>Hi Tauhid,
+
+Thanks for reaching out. The Classic Bulldog Tee in size S is currently out of stock. If the reprint goes ahead, the earliest it could arrive is September 5; that timing depends on the reprint being confirmed, so I can’t promise a date yet. We’ll let you know once it’s confirmed.
+
+Best,
+Campus Customs</pre></details></section>
+  </div>
+</article>
+<article class="tk resolved">
+  <div class="stamp">Resolved</div>
+  <header><span class="no">#102</span><div><h2>Rent due</h2><p>Elm City Properties · rent notice · run <code>431d956e23</code></p></div></header>
+  <div class="row">
+    <div class="dec">Needed my approval</div>
+    <div class="cash"><span>Cash</span> $2,560.00 <span class="arr">→</span> <b>$160.00</b> <em>(−$2,400.00)</em></div>
+    <div class="tok">8 model calls · 7 tool calls · 11,774 tokens</div>
+  </div>
+  <p class="boss">Ticket 102 reports rent due in two days. Lease 1 requires $2,400 to Elm City Properties by 2026-09-02, so the stated timing matches; the notice did not include an amount or landlord for comparison. Cash is sufficient ($2,560 balance; $160 projected after payment), and the $2,400 payment request is awaiting human approval.</p>
+  
+  <div class="grid2">
+    <section><h3>Delegations</h3><ol class="flow"><li><span class="ag" style="--c:#f5c542">👑 The Boss</span> <span class="arr">→</span> <span class="ag" style="--c:#ff7a59">🏛️ Facilities</span><small>For rent notice ticket 102, check lease_id 1 against the email saying rent is due in 2 days (today 2026-08-31). Verify amount, landlord, due date, and whether notice matches lease; check/request payment only if appropriate, including cash sufficiency.</small></li><li><span class="ag" style="--c:#ff7a59">🏛️ Facilities</span> <span class="arr">→</span> <span class="ag" style="--c:#a78bfa">💵 Accounting</span><small>For rent ticket 102, lease_id 1: landlord Elm City Properties, exact full rent $2,400.00, due 2026-09-02. Check cash sufficiency and create the payment request if appropriate; report status and balance facts.</small></li></ol><p class="skip">Not called: Inventory, Customer Service</p>
+      <h3>MCP tools</h3><table><tr><td><span class="ag" style="--c:#ff7a59">🏛️ Facilities</span></td><td><code>get_lease</code></td></tr><tr><td><span class="ag" style="--c:#a78bfa">💵 Accounting</span></td><td><code>get_lease</code><code>get_cash_balance</code><code>list_payments</code><code>check_payment</code></td></tr></table></section>
+    <section><h3>What each agent did</h3><ul class="sums"><li style="--c:#f5c542"><b>👑 The Boss</b>Ticket 102 reports rent due in two days. Lease 1 requires $2,400 to Elm City Properties by 2026-09-02, so the stated timing matches; the notice did not include an amount or landlord for comparison. Cash is sufficient ($2,560 balance; $160 projected after payment), and the $2,400 payment request is awaiting human approval.</li><li style="--c:#a78bfa"><b>💵 Accounting</b>The exact $2,400 rent for Elm City Properties is due 2026-09-02. Checking has enough cash; the rent payment request is awaiting human approval, and the projected balance afterward is $160.00.</li><li style="--c:#ff7a59"><b>🏛️ Facilities</b>The lease requires $2,400.00 to Elm City Properties by 2026-09-02, which is 2 days from today (2026-08-31). The email’s “due in 2 days” timing matches the lease; the amount and landlord cannot be compared because they were not provided in the notice text. Cash is sufficient, and a rent payment request is awaiting human approval.</li></ul>
+      <h3>Human approval</h3><div class="appr">✍️ <b>Soyoun Park</b> approved rent 1: <b>$2,400.00</b> to Elm City Properties · payment #2 · checking after $160.00</div>
+      </section>
+  </div>
+</article>
+<article class="tk open">
+  <div class="stamp">Open · Blocked</div>
+  <header><span class="no">#103</span><div><h2>Bulk hoodie discount</h2><p>Yale AI Club · price override · run <code>03ee63f294</code></p></div></header>
+  <div class="row">
+    <div class="dec">Blocked</div>
+    <div class="cash"><span>Cash</span> $160.00 <span class="arr">→</span> <b>$160.00</b> <em>($0.00)</em></div>
+    <div class="tok">14 model calls · 16 tool calls · 26,873 tokens</div>
+  </div>
+  <p class="boss">Yale AI Club requested 20 navy, size M hoodies with a bulk discount. Stock is 8; the 12-unit reprint would cost $264 and was refused because checking has only $160, so only the 8 in-stock units can be offered now. The customer draft offers those 8 at $50 each ($400 total); the remaining 12 cannot be confirmed yet.</p>
+  <div class="disc"><span>👑 Boss’s final price</span><b>8 × $50.00 = $400.00</b> <em>list $58.00 · floor $22.00 · A roughly 14% bulk discount from the $58 list price, while staying above the $22 unit cost. · corrected by me to match the actual offer</em></div><div class="why"><b>Why it stays open</b><ul><li>a needed payment or purchase was refused: not enough cash</li><li>the Boss reported the ticket as blocked</li></ul></div>
+  <div class="grid2">
+    <section><h3>Delegations</h3><ol class="flow"><li><span class="ag" style="--c:#f5c542">👑 The Boss</span> <span class="arr">→</span> <span class="ag" style="--c:#2ed3b7">📦 Inventory</span><small>Ticket 103 price_override: check SKU CC-HOOD-NAVY size M, qty 20. Report shelf stock/have and short, reprint vendor id, whether it can ship, earliest arrival if shipped today 2026-08-31, and unit cost.</small></li><li><span class="ag" style="--c:#f5c542">👑 The Boss</span> <span class="arr">→</span> <span class="ag" style="--c:#a78bfa">💵 Accounting</span><small>Ticket 103 reprint purchase check: vendor Bulldog Print Co id 1, SKU CC-HOOD-NAVY size M, qty 12 short, unit_cost $22.00, amount $264.00. Check cash first and report whether purchase request waits for human approval or is refused for insufficient cash.</small></li><li><span class="ag" style="--c:#f5c542">👑 The Boss</span> <span class="arr">→</span> <span class="ag" style="--c:#ff4fa3">💬 Customer Service</span><small>Draft offer response for ticket 103, Yale AI Club, CC-HOOD-NAVY size M qty 20. Final price will be $50 per hoodie (list $58, cost $22). Stock 8 now; 12 more reprint purchase was refused due to insufficient cash, so offer only 8 in-stock units and say remaining 12 cannot be confirmed yet; no date or money talk. Draft only.</small></li></ol><p class="skip">Not called: Facilities</p>
+      <h3>MCP tools</h3><table><tr><td><span class="ag" style="--c:#2ed3b7">📦 Inventory</span></td><td><code>check_stock</code><code>get_pricing</code><code>list_vendors</code><code>get_desk</code><code>vendor_shipping_status</code></td></tr><tr><td><span class="ag" style="--c:#a78bfa">💵 Accounting</span></td><td><code>get_cash_balance</code><code>get_pricing</code><code>vendor_shipping_status</code><code>check_payment</code></td></tr><tr><td><span class="ag" style="--c:#f5c542">👑 The Boss</span></td><td><code>get_pricing</code></td></tr><tr><td><span class="ag" style="--c:#ff4fa3">💬 Customer Service</span></td><td><code>get_ticket</code><code>check_stock</code><code>get_pricing</code></td></tr></table></section>
+    <section><h3>What each agent did</h3><ul class="sums"><li style="--c:#f5c542"><b>👑 The Boss</b>Yale AI Club requested 20 navy, size M hoodies with a bulk discount. Stock is 8; the 12-unit reprint would cost $264 and was refused because checking has only $160, so only the 8 in-stock units can be offered now. The customer draft offers those 8 at $50 each ($400 total); the remaining 12 cannot be confirmed yet.</li><li style="--c:#2ed3b7"><b>📦 Inventory</b>Shelf stock is 8 of 20 requested (short by 12). The apparel reprint vendor is Bulldog Print Co (vendor 1); it can ship, with earliest arrival on 2026-09-05 if shipped today. Unit cost is $22.00.</li><li style="--c:#a78bfa"><b>💵 Accounting</b>The $264.00 reprint purchase from Bulldog Print Co is refused for insufficient checking cash; the balance is $160.00, leaving a $104.00 shortfall. The vendor can ship, and arrival would be 2026-09-05 if shipped today.</li><li style="--c:#ff4fa3"><b>💬 Customer Service</b>Draft offers Yale AI Club 8 Basic Hoodie Big Yale hoodies in navy, size M, at $50 each ($400 total); the remaining 12 cannot be confirmed yet.</li></ul>
+      <h3>Human approval</h3><div class="appr none">Nothing reached me to approve.</div><div class="appr refused">⛔ purchase request refused before reaching me: <b>$264.00</b> to Bulldog Print Co (12 × CC-HOOD-NAVY M). Checking only has $160.00.</div>
+      <h3>Drafts on the board</h3><details><summary>Draft (customer reply) to Yale AI Club: Re: Bulk hoodie discount <i>never sent</i></summary><pre>Hi Yale AI Club,
+
+We can offer 8 navy Basic Hoodie Big Yale hoodies in size M at $50 each, for $400 total. The remaining 12 cannot be confirmed yet.
+
+Best,
+Campus Customs</pre></details><h3>History</h3><ol class="hist"><li>run cc1a7c1812: first run: offer left pending the owner, reprint cash not checked; backend marked it resolved</li><li>ticket_reopened: human review: Boss had not decided the discount and nobody checked cash for the reprint</li><li>run 03ee63f294: re-run with the fixed rules (this result)</li><li>decision_corrected: Boss discount qty/total corrected by a human to match the actual offer: 8 x $50 = $400 (was 20 x $50 = $1,000)</li></ol></section>
+  </div>
+</article>
+<section class="ledger"><h3>Payments table after the run</h3>
+<table><tr><td>Payment</td><td>What</td><td>Approved by</td><td class="n">Amount</td></tr><tr><td>#1</td><td>invoice 501</td><td>Soyoun Park</td><td class="n">−$840.00</td></tr><tr><td>#2</td><td>rent 1</td><td>Soyoun Park</td><td class="n">−$2,400.00</td></tr>
+<tr><td colspan="3"><b>$3,400.00 start → ending balance</b></td><td class="n"><b>$160.00</b></td></tr></table></section>
+<footer>Nothing on this board was emailed or sent. Drafts stay drafts. Cash only went out, never below $0, and only after a human approved. A blocked ticket is never marked resolved.</footer>
+</div></body></html>

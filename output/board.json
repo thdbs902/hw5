@@ -1,0 +1,223 @@
+{
+  "101": {
+    "run_id": "7ebd664030",
+    "ticket_id": 101,
+    "shop_today": "2026-08-31",
+    "decision": {
+      "summary": "Tauhid Zaman ordered one CC-TEE-WHITE tee in size S, but none are in stock. Bulldog Print Co needs invoice 501 ($840, due 2026-08-28) cleared before it will ship; if shipped today, its five-day lead time gives an earliest arrival of 2026-09-05. Accounting confirms the $840 payment request is eligible for human approval and would leave $2,560 in checking; a customer reply draft is ready.",
+      "status": "needs_human_approval",
+      "next_steps": [
+        "Approve the $840 payment request for invoice 501 to unblock the vendor shipment.",
+        "Review the customer reply draft and send it yourself; clarify the arrival date is conditional on shipment proceeding."
+      ]
+    },
+    "agent_calls": [
+      {
+        "agent": "boss",
+        "called_by": null,
+        "task": "triage ticket 101"
+      },
+      {
+        "agent": "inventory",
+        "called_by": "boss",
+        "task": "For customer_order ticket 101: check availability of 1 CC-TEE-WHITE size S today 2026-08-31, and vendor/reprint details if short. Include relevant lead days/earliest arrival and any unpaid invoice blocking shipment."
+      },
+      {
+        "agent": "accounting",
+        "called_by": "boss",
+        "task": "For customer order ticket 101, inspect invoice 501 ($840 open, Bulldog Print Co rush reprint CC-TEE-WHITE S). Check payment/cash status and whether a payment request can be submitted for human approval; do not pay."
+      },
+      {
+        "agent": "customer_service",
+        "called_by": "boss",
+        "task": "Draft a reply for ticket 101 to Tauhid Zaman requesting 1 CC-TEE-WHITE size S. Inventory is 0; reprint needs invoice 501 $840 paid/approved before vendor can ship. Lead time 5 days, earliest arrival if it shipped today 2026-09-05. Explain timing without promising until payment/reprint confirmed."
+      }
+    ],
+    "payment_requests": [
+      {
+        "kind": "invoice",
+        "ref_id": 501,
+        "payee": "Bulldog Print Co",
+        "amount": 840.0,
+        "account": "checking",
+        "reason": "Rush reprint CC-TEE-WHITE S; invoice is open and overdue. Requires human approval; no payment made.",
+        "sku": null,
+        "size": null,
+        "qty": null,
+        "balance_before": 3400.0,
+        "balance_after": 2560.0,
+        "status": "paid",
+        "payment_id": 1,
+        "approved_by": "Soyoun Park"
+      }
+    ],
+    "drafts": [
+      {
+        "kind": "customer_reply",
+        "to": "Tauhid Zaman",
+        "subject": "Re: Bulldog tee",
+        "body": "Hi Tauhid,\n\nThanks for reaching out. The Classic Bulldog Tee in size S is currently out of stock. If the reprint goes ahead, the earliest it could arrive is September 5; that timing depends on the reprint being confirmed, so I can\u2019t promise a date yet. We\u2019ll let you know once it\u2019s confirmed.\n\nBest,\nCampus Customs",
+        "status": "draft"
+      }
+    ],
+    "usage": {
+      "requests": 13,
+      "tool_calls": 14,
+      "input_tokens": 20353,
+      "output_tokens": 1338,
+      "total_tokens": 21691
+    },
+    "model": "gpt-6-luna"
+  },
+  "102": {
+    "run_id": "431d956e23",
+    "ticket_id": 102,
+    "shop_today": "2026-08-31",
+    "decision": {
+      "summary": "Ticket 102 reports rent due in two days. Lease 1 requires $2,400 to Elm City Properties by 2026-09-02, so the stated timing matches; the notice did not include an amount or landlord for comparison. Cash is sufficient ($2,560 balance; $160 projected after payment), and the $2,400 payment request is awaiting human approval.",
+      "status": "needs_human_approval",
+      "next_steps": [
+        "Approve the $2,400 rent payment for lease 1 to Elm City Properties.",
+        "Confirm the notice\u2019s amount and payee match the lease before processing."
+      ]
+    },
+    "agent_calls": [
+      {
+        "agent": "boss",
+        "called_by": null,
+        "task": "triage ticket 102"
+      },
+      {
+        "agent": "facilities",
+        "called_by": "boss",
+        "task": "For rent notice ticket 102, check lease_id 1 against the email saying rent is due in 2 days (today 2026-08-31). Verify amount, landlord, due date, and whether notice matches lease; check/request payment only if appropriate, including cash sufficiency."
+      },
+      {
+        "agent": "accounting",
+        "called_by": "facilities",
+        "task": "For rent ticket 102, lease_id 1: landlord Elm City Properties, exact full rent $2,400.00, due 2026-09-02. Check cash sufficiency and create the payment request if appropriate; report status and balance facts."
+      }
+    ],
+    "payment_requests": [
+      {
+        "kind": "rent",
+        "ref_id": 1,
+        "payee": "Elm City Properties",
+        "amount": 2400.0,
+        "account": "checking",
+        "reason": "Full monthly rent due 2026-09-02; sufficient funds confirmed. Requires human approval.",
+        "sku": null,
+        "size": null,
+        "qty": null,
+        "balance_before": 2560.0,
+        "balance_after": 160.0,
+        "status": "paid",
+        "payment_id": 2,
+        "approved_by": "Soyoun Park"
+      }
+    ],
+    "drafts": [],
+    "usage": {
+      "requests": 8,
+      "tool_calls": 7,
+      "input_tokens": 10872,
+      "output_tokens": 902,
+      "total_tokens": 11774
+    },
+    "model": "gpt-6-luna"
+  },
+  "103": {
+    "run_id": "03ee63f294",
+    "ticket_id": 103,
+    "shop_today": "2026-08-31",
+    "decision": {
+      "summary": "Yale AI Club requested 20 navy, size M hoodies with a bulk discount. Stock is 8; the 12-unit reprint would cost $264 and was refused because checking has only $160, so only the 8 in-stock units can be offered now. The customer draft offers those 8 at $50 each ($400 total); the remaining 12 cannot be confirmed yet.",
+      "status": "blocked",
+      "next_steps": [
+        "Review and send the customer draft yourself.",
+        "Resolve the $104 cash shortfall before considering a reprint for the remaining 12."
+      ],
+      "discount": {
+        "sku": "CC-HOOD-NAVY",
+        "qty": 8,
+        "list_price": 58.0,
+        "unit_cost": 22.0,
+        "unit_price": 50.0,
+        "total": 400.0,
+        "reason": "A roughly 14% bulk discount from the $58 list price, while staying above the $22 unit cost."
+      }
+    },
+    "agent_calls": [
+      {
+        "agent": "boss",
+        "called_by": null,
+        "task": "triage ticket 103"
+      },
+      {
+        "agent": "inventory",
+        "called_by": "boss",
+        "task": "Ticket 103 price_override: check SKU CC-HOOD-NAVY size M, qty 20. Report shelf stock/have and short, reprint vendor id, whether it can ship, earliest arrival if shipped today 2026-08-31, and unit cost."
+      },
+      {
+        "agent": "accounting",
+        "called_by": "boss",
+        "task": "Ticket 103 reprint purchase check: vendor Bulldog Print Co id 1, SKU CC-HOOD-NAVY size M, qty 12 short, unit_cost $22.00, amount $264.00. Check cash first and report whether purchase request waits for human approval or is refused for insufficient cash."
+      },
+      {
+        "agent": "customer_service",
+        "called_by": "boss",
+        "task": "Draft offer response for ticket 103, Yale AI Club, CC-HOOD-NAVY size M qty 20. Final price will be $50 per hoodie (list $58, cost $22). Stock 8 now; 12 more reprint purchase was refused due to insufficient cash, so offer only 8 in-stock units and say remaining 12 cannot be confirmed yet; no date or money talk. Draft only."
+      }
+    ],
+    "payment_requests": [
+      {
+        "kind": "purchase",
+        "ref_id": 1,
+        "payee": "Bulldog Print Co",
+        "amount": 264.0,
+        "account": "checking",
+        "reason": "Reprint 12 CC-HOOD-NAVY, size M; refused because checking cash is insufficient.",
+        "sku": "CC-HOOD-NAVY",
+        "size": "M",
+        "qty": 12,
+        "balance_before": 160.0,
+        "balance_after": null,
+        "status": "refused_not_enough_cash",
+        "payment_id": null,
+        "approved_by": null
+      }
+    ],
+    "drafts": [
+      {
+        "kind": "customer_reply",
+        "to": "Yale AI Club",
+        "subject": "Re: Bulk hoodie discount",
+        "body": "Hi Yale AI Club,\n\nWe can offer 8 navy Basic Hoodie Big Yale hoodies in size M at $50 each, for $400 total. The remaining 12 cannot be confirmed yet.\n\nBest,\nCampus Customs",
+        "status": "draft"
+      }
+    ],
+    "usage": {
+      "requests": 14,
+      "tool_calls": 16,
+      "input_tokens": 25490,
+      "output_tokens": 1383,
+      "total_tokens": 26873
+    },
+    "model": "gpt-6-luna",
+    "ticket_status": null,
+    "status_reasons": [],
+    "decision_corrected": {
+      "field": "discount",
+      "before": {
+        "qty": 20,
+        "total": 1000.0
+      },
+      "after": {
+        "qty": 8,
+        "total": 400.0
+      },
+      "by": "Soyoun Park (human review)",
+      "why": "the actual offer is the 8 in-stock hoodies at $50 = $400; the reprint of 12 was refused for cash"
+    }
+  }
+}
