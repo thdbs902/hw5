@@ -729,3 +729,13 @@ Follow-up — the first prompt asked to see what would be committed before pushi
 Follow-up — the first push was refused (403) because my GitHub token could not write to the new repo; after I fixed the token access, I asked to retry:
 
 > push again
+
+Follow-up — after the push, I asked for one last check of the whole homework before submitting:
+
+> plz do one final check of my whole HW5 before I submit it.
+>
+> make sure all Problems 1-11 are complete and all required files are in the public GitHub repo.
+>
+> if everything is correct, tell me it is ready to submit.
+>
+> do not change anything unless something is actually wrong.
